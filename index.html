@@ -416,9 +416,10 @@
 
             currentGuestName = name;
             const baseUrl = "https://nansanrayandsrengsivmey.pages.dev";
-            // Keep Khmer guest names readable in the message; encode the QR payload safely.
-            actualLinkToCopy = baseUrl + "?to=" + name;
-            encodedQrLink = baseUrl + "?to=" + encodeURIComponent(name);
+            // Encode the guest name for the URL so Khmer text, spaces, and special characters
+            // are passed as one complete query parameter in browsers and messaging apps.
+            actualLinkToCopy = baseUrl + "?to=" + encodeURIComponent(name);
+            encodedQrLink = actualLinkToCopy;
 
             // Display the result immediately, before attempting to load QR resources.
             document.getElementById('generatedLinkText').innerText = actualLinkToCopy;
